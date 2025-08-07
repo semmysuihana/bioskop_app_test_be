@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Film</title>
+</head>
+<body>
+
+  <h1>Welcome, User</h1>
+  <h2>Daftar Film</h2>
+
+  <ul>
+    <% let a = 1; %>
+    <% data.forEach(function(movie) { %>
+      <li>
+        <div>
+          <strong><%= a %>. <%= movie.title %></strong><br>
+          <span><%= movie.description %></span><br>
+          <span>Durasi: <%= movie.duration_minutes %> menit</span><br>
+          <a href="/movies/<%= movie.id %>/showtimes">Lihat Jadwal</a>
+        </div>
+        <br>
+      </li>
+      <% a++; %>
+    <% }); %>
+  </ul>
+
+</body>
+</html>

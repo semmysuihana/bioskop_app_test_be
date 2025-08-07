@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies</title>
+</head>
+<body>
+
+  <h1>Movies</h1>
+
+  <p>
+    <a href="/input-movies">+ Input Movie</a>
+  </p>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Deskripsi</th>
+        <th>Durasi (menit)</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+  <% if (ket) { %>
+    <p><%= ket %></p>
+  <% } %>
+      <% let no = 1; %>
+      <% data.forEach(function(movies) { %>
+        <tr>
+          <td><%= no++ %></td>
+          <td><%= movies.title %></td>
+          <td><%= movies.description %></td>
+          <td><%= movies.duration_minutes %></td>
+          <td>
+            <a href="/edit-movies/<%= movies.id %>">Edit</a> |
+            <a href="/hapus-movies/<%= movies.id %>" onclick="return confirm('Yakin mau hapus film ini?')">Delete</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<script>
+   function confirmDelete() {
+      return confirm('Yakin mau hapus film ini?');
+    }
+</script>
+</body>
+</html>

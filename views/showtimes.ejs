@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showtimes</title>
+</head>
+<body>
+
+  <h1>Showtimes</h1>
+
+  <a href="/input-showtimes">Input Showtimes</a>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Studio</th>
+        <th>Movie</th>
+        <th>Start Time</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let a = 1; %>
+      <% data.forEach(function(showtime) { %>
+        <tr>
+          <td><%= a %></td>
+          <td><%= showtime.studioNo %></td>
+          <td><%= showtime.movieName %></td>
+          <% const date = new Date(showtime.start_time); %>
+<td>
+  <%= date.toLocaleDateString('id-ID') %> <%= date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false }) %>
+</td>
+
+          <td>
+            <a href="/edit-showtimes/<%= showtime.id %>">Edit</a>
+            |
+            <a href="/hapus-showtimes/<%= showtime.id %>" onclick="return confirm('Yakin ingin menghapus?')">Delete</a>
+          </td>
+        </tr>
+        <% a++; %>
+      <% }); %>
+    </tbody>
+  </table>
+
+</body>
+</html>

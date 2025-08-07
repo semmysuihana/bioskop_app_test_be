@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Movie</title>
+</head>
+<body>
+  <h1>Input Movie</h1>
+
+  <form action="/input-movies" method="POST">
+    <p>
+      <label for="title">Judul Film:</label><br>
+      <input type="text" id="title" name="title" required>
+    </p>
+
+    <p>
+      <label for="deskripsi">Deskripsi:</label><br>
+      <textarea id="deskripsi" name="deskripsi" rows="4" cols="50" required></textarea>
+    </p>
+
+    <p>
+      <label for="duration_minutes">Durasi (menit):</label><br>
+      <input type="number" id="duration_minutes" name="duration_minutes" required>
+    </p>
+
+    <p>
+      <button type="submit">Simpan</button>
+    </p>
+  </form>
+
+</body>
+</html>

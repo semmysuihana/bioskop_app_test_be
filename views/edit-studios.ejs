@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Studio</title>
+</head>
+<body>
+
+  <h1>Edit Studio</h1>
+
+  <form action="/edit-studios/<%= data.id %>" method="POST">
+
+    <p>
+      <label for="studio_number">No Studio:</label><br>
+      <input type="number" id="studio_number" name="studio_number" value="<%= data.studio_number %>" required>
+    </p>
+
+    <p>
+      <label for="seat_capacity">Kapasitas:</label><br>
+      <input type="number" id="seat_capacity" name="seat_capacity" value="<%= data.seat_capacity %>" required>
+    </p>
+
+    <p>
+      <button type="submit">Simpan Perubahan</button>
+    </p>
+
+  </form>
+
+</body>
+</html>

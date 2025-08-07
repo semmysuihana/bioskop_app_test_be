@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Showtime</title>
+</head>
+<body>
+
+  <h1>Edit Showtime</h1>
+
+  <form action="/edit-showtimes/<%= data.id %>" method="POST">
+
+    <!-- Movie -->
+    <div>
+      <label for="movie">Movie:</label><br>
+      <select id="movie" name="movie" required>
+        <% dataMovies.forEach(movie => { %>
+          <option value="<%= movie.id %>" <% if (movie.id == data.movieId) { %>selected<% } %>><%= movie.title %></option>
+        <% }); %>
+      </select>
+    </div><br>
+
+    <!-- Studio -->
+    <div>
+      <label for="studio">Studio:</label><br>
+      <select id="studio" name="studio" required>
+        <% dataStudio.forEach(studio => { %>
+          <option value="<%= studio.id %>" <% if (studio.id == data.studioId) { %>selected<% } %>><%= studio.studio_number %></option>
+        <% }); %>
+      </select>
+    </div><br>
+
+    <!-- Start Time -->
+    <div>
+      <label for="start_time">Start Time:</label><br>
+      <input type="datetime-local" id="start_time" name="start_time"
+             value="<%= new Date(data.start_time).toISOString().slice(0,16) %>" required>
+    </div><br>
+
+    <!-- Tombol -->
+    <button type="submit">Simpan Perubahan</button>
+
+  </form>
+
+</body>
+</html>

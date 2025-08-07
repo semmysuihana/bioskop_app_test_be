@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Showtime</title>
+</head>
+<body>
+
+  <h1>Input Showtime</h1>
+
+  <form action="/input-showtimes" method="POST">
+
+    <!-- Pilih Movie -->
+    <div>
+      <label for="movie">Movie</label><br>
+      <select id="movie" name="movie" required>
+        <option value="" disabled selected>-- Pilih Movie --</option>
+        <% dataMovies.forEach(movie => { %>
+          <option value="<%= movie.id %>"><%= movie.title %></option>
+        <% }); %>
+      </select>
+    </div><br>
+
+    <!-- Pilih Studio -->
+    <div>
+      <label for="studio">Studio</label><br>
+      <select id="studio" name="studio" required>
+        <option value="" disabled selected>-- Pilih Studio --</option>
+        <% dataStudio.forEach(studio => { %>
+          <option value="<%= studio.id %>">Studio <%= studio.studio_number %></option>
+        <% }); %>
+      </select>
+    </div><br>
+
+    <!-- Pilih Start Time -->
+    <div>
+      <label for="start_time">Start Time</label><br>
+      <input type="datetime-local" id="start_time" name="start_time" required>
+    </div><br>
+
+    <!-- Tombol Submit -->
+    <button type="submit">Simpan</button>
+
+  </form>
+
+</body>
+</html>

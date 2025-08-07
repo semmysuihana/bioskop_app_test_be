@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>studios</title>
+</head>
+<body>
+
+  <h1>studios</h1>
+
+  <p>
+    <a href="/input-studios">+ Input Studio</a>
+  </p>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Studio Number</th>
+        <th>Seat Capacity</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+  <% if (ket) { %>
+    <p><%= ket %></p>
+  <% } %>
+      <% let no = 1; %>
+      <% data.forEach(function(studios) { %>
+        <tr>
+          <td><%= no++ %></td>
+          <td><%= studios.studio_number %></td>
+          <td><%= studios.seat_capacity %></td>
+          <td>
+            <a href="/edit-studios/<%= studios.id %>">Edit</a> |
+            <a href="/hapus-studios/<%= studios.id %>" onclick="return confirm('Yakin mau hapus film ini?')">Delete</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<script>
+   function confirmDelete() {
+      return confirm('Yakin mau hapus film ini?');
+    }
+</script>
+</body>
+</html>

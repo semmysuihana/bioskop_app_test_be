@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Showtime</title>
+  <style>
+    .seat {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .booked {
+      background-color: red;
+      cursor: not-allowed;
+    }
+    .selected {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Detail Showtime</h1>
+
+  <p><strong>Film:</strong> <%= showtimeData[0].movie_id %></p>
+  <p><strong>Studio:</strong> Studio <%= data.studio_number %></p>
+  <p><strong>Kapasitas Kursi:</strong> <%= total_seats %> kursi</p>
+  <p><strong>Waktu Mulai:</strong> <%= new Date(showtimeData[0].start_time).toLocaleString() %></p>
+
+  <h3>Tempat Duduk:</h3>
+
+  <form action="/bookings" method="POST">
+    <input type="hidden" name="showtime_id" value="<%= showtimeData[0].id %>">
+    <input type="hidden" name="user_id" value="<%= idUser %>">
+
+    <table border="1" cellpadding="5" cellspacing="0">
+      <% 
+        const seatsPerRow = 10;
+        for (let i = 0; i < arrSeats.length; i += seatsPerRow) { 
+      %>
+        <tr>
+          <% 
+            for (let j = i; j < i + seatsPerRow && j < arrSeats.length; j++) {
+              const seat = arrSeats[j];
+              const isBooked = bookedSeats.includes(seat);
+          %>
+            <td 
+              class="seat <%= isBooked ? 'booked' : '' %>" 
+              data-seat="<%= seat %>" 
+              onclick="<%= isBooked ? '' : 'toggleSeat(this)' %>"
+            >
+              <%= seat %>
+              <% if (!isBooked) { %>
+                <input type="checkbox" name="seat_number[]" value="<%= seat %>" style="display: none;">
+              <% } %>
+            </td>
+          <% } %>
+        </tr>
+      <% } %>
+    </table>
+
+    <br>
+    <button type="submit">Pesan Kursi</button>
+  </form>
+
+  <br>
+  <a href="/home">Kembali ke Home</a>
+
+  <script>
+    function toggleSeat(td) {
+      const checkbox = td.querySelector('input[type="checkbox"]');
+      if (!checkbox) return;
+
+      checkbox.checked = !checkbox.checked;
+      td.classList.toggle('selected', checkbox.checked);
+    }
+  </script>
+
+</body>
+</html>
