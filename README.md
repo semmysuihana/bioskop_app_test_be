@@ -11,6 +11,9 @@ Repository ini berisi backend untuk aplikasi bioskop (test). Di dalamnya terdapa
 - Dan lain-lain sesuai kebutuhan proyek
 
 ---
+## 🚀 Menjalankan
+npm run dev(nodemon)
+localhost:1000
 
 ## 📦 Setup & Instalasi Dependensi
 
